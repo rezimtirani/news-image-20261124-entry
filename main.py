@@ -7,7 +7,8 @@ access, no downloaded images: every glyph is drawn with Pillow shapes.
 
 Run:  python3 main.py
 Writes: $MAKEFUN_OUTPUT_DIR/entry.png (default: ./output/entry.png)
-        and ./entry.png next to this script, for the repository.
+        The graded run mounts the repository read-only, so nothing is
+        written next to this script.
 """
 
 import os
@@ -237,7 +238,6 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     image = build_frontpage()
     image.save(os.path.join(out_dir, "entry.png"))
-    image.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png"))
     verify_png(os.path.join(out_dir, "entry.png"))
     print("Wrote entry.png (1024x1024)")
 
